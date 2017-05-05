@@ -4,17 +4,27 @@
   <meta charset="UTF-8">
   <title>Meadow Point Tide Prediction</title>
   <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+  .pad {
+    padding: 0 20px 0 20px;
+  }
+  </style>
 </head>
 <body>
   <div class="pure-g">
-    <div class="pure-u-1-5"></div>
-      <div class="pure-u-3-5">
-        <h1>Meadow Point Tide Chart</h1>
-        <p>Otherwise known as Golden Gardens. In the Ballard neighborhood of Seattle, WA</p>
+      <div class="pure-u-1 pure-u-md-3-5">
+        <h2 class="pad">Meadow Point Tide Chart</h2>
+        <p class="pad">Otherwise known as Golden Gardens. In the Ballard neighborhood of Seattle, WA</p>
         <script src="//tides.tidegraph.com/api/tidegraph.php?bg=white&scale=1&color=black&lat=47.6733790&lng=-122.4076660"></script>
       </div>
-    <div class="pure-u-1-5"></div>
+    <div class="pure-u-1 pure-u-md-2-5">
+      <h2 class="pad">West Point Wind and Weather</h2>
+      <div>
+        <iframe src="http://www.ndbc.noaa.gov/widgets/station_page.php?station=WPOW1" style="border: hidden; height: 100vh"></iframe>
+      </div>
+    </div>
   </div>
 </body>
 </html>
