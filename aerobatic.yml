@@ -1,12 +1,17 @@
+---
 id: 08170d95-8466-4588-8d8d-b9687e94ed3b
 deploy:
   ignore: []
   directory: .
 plugins:
-  - name: webpage
+  - name: cors
+    path: /wpow1
+    options:
+      origin: 
+        - "https://seattletide.aerobatic.io"
+        - "http://127.0.0.1:3000"
   - name: http-proxy
     path: /wpow1
     options:
       url: http://www.ndbc.noaa.gov/data/realtime2/WPOW1.txt
-  - name: cors
-    path: /wpow1
+  - name: webpage

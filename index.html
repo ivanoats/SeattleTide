@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Meadow Point Tide Prediction</title>
+  <title>Meadow Point Tide and Weather</title>
   <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/pure-min.css">
   <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +22,12 @@
     <div class="pure-u-1 pure-u-md-2-5">
       <h2 class="pad">West Point Wind and Weather</h2>
       <div id="wpow">
+        <ul>
+          <li>Wind direction: <span id="direction"></span>º</li>
+          <li>Wind speed: <span id="speed"></span> mph</li>
+          <li>Wind gusts: <span id="gust"></span> mph</li>  
+          <li>Temperature: <span id="temp"></span>º F</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -29,10 +35,35 @@
   // fetch http://www.ndbc.noaa.gov/data/realtime2/WPOW1.txt
   // using Aerobatic CORS/HTTP Proxy endpoint set up in aerobatic.yml
   // split 3rd line by space
-  fetch('/wpow1', {
+  fetch('https://seattletide.aerobatic.io/wpow1', {
     mode: 'cors'
   }).then(function(res) {
-    console.log(res)
+    return res.text()
+  }).then(function(conditions) {
+    //process the lines of the text file
+    const conditionsLines = conditions.split('\n')
+    const currentConditions = conditionsLines[2]
+    //process the columns of the line of text
+    const currentConditionsArray = currentConditions.split(' ')
+    window.res = currentConditionsArray
+    const direction = currentConditionsArray[5]
+    // speed and gust are provided in meters per second
+    // multiply by 2.236936 to get miles per hour (or round up)
+    const convertMetersPerSecondToMilesPerHour = 2.24
+    const speed = currentConditionsArray[7] * convertMetersPerSecondToMilesPerHour
+    const gust = currentConditionsArray[9] * convertMetersPerSecondToMilesPerHour
+    const barometer = currentConditionsArray[24]
+    // temp is provided in degrees Celcius
+    const convertCtoF = function convert(c) { return ( c * (9/5) ) + 32 }
+    const temp = convertCtoF(currentConditionsArray[26])
+    const round = function round(x) {
+      return Math.round(x * 100) / 100
+    }
+    // update the html elements
+    document.getElementById('direction').innerText = direction
+    document.getElementById('speed').innerText = round(speed)
+    document.getElementById('gust').innerText = round(gust)
+    document.getElementById('temp').innerText = round(temp)
   })
   </script>
 </body>
