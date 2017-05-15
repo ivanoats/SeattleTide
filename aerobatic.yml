@@ -4,3 +4,9 @@ deploy:
   directory: .
 plugins:
   - name: webpage
+  - name: http-proxy
+    path: /wpow1
+    options:
+      url: http://www.ndbc.noaa.gov/data/realtime2/WPOW1.txt
+  - name: cors
+    path: /wpow1

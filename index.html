@@ -21,10 +21,19 @@
       </div>
     <div class="pure-u-1 pure-u-md-2-5">
       <h2 class="pad">West Point Wind and Weather</h2>
-      <div>
-        <iframe src="http://www.ndbc.noaa.gov/widgets/station_page.php?station=WPOW1" style="border: hidden; height: 100vh"></iframe>
+      <div id="wpow">
       </div>
     </div>
   </div>
+  <script>
+  // fetch http://www.ndbc.noaa.gov/data/realtime2/WPOW1.txt
+  // using Aerobatic CORS/HTTP Proxy endpoint set up in aerobatic.yml
+  // split 3rd line by space
+  fetch('/wpow1', {
+    mode: 'cors'
+  }).then(function(res) {
+    console.log(res)
+  })
+  </script>
 </body>
 </html>
