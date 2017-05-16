@@ -9,19 +9,20 @@ fetch('https://seattletide.aerobatic.io/wpow1', {
   //process the lines of the text file
   const conditionsLines = conditions.split('\n')
   const currentConditions = conditionsLines[2]
+  const fixedCurrentConditions = currentConditions.replace(/  */g," ")
   //process the columns of the line of text
-  const currentConditionsArray = currentConditions.split(' ')
+  const currentConditionsArray = fixedCurrentConditions.split(' ')
   window.res = currentConditionsArray
   const direction = currentConditionsArray[5]
   // speed and gust are provided in meters per second
   // multiply by 2.236936 to get miles per hour (or round up)
   const convertMetersPerSecondToMilesPerHour = 2.24
-  const speed = currentConditionsArray[7] * convertMetersPerSecondToMilesPerHour
-  const gust = currentConditionsArray[9] * convertMetersPerSecondToMilesPerHour
-  const barometer = currentConditionsArray[24]
+  const speed = currentConditionsArray[6] * convertMetersPerSecondToMilesPerHour
+  const gust = currentConditionsArray[7] * convertMetersPerSecondToMilesPerHour
+  const barometer = currentConditionsArray[12]
   // temp is provided in degrees Celcius
   const convertCtoF = function convert(c) { return ( c * (9/5) ) + 32 }
-  const temp = convertCtoF(currentConditionsArray[26])
+  const temp = convertCtoF(currentConditionsArray[13])
   const round = function round(x) {
     return Math.round(x * 100) / 100
   }
