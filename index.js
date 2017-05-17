@@ -1,5 +1,6 @@
 // fetch http://www.ndbc.noaa.gov/data/realtime2/WPOW1.txt
 // using Aerobatic CORS/HTTP Proxy endpoint set up in aerobatic.yml
+// data format documentation: http://www.ndbc.noaa.gov/measdes.shtml
 // split 3rd line by space
 fetch('https://seattletide.aerobatic.io/wpow1', {
   mode: 'cors'
