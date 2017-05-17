@@ -2,7 +2,8 @@
 // using Aerobatic CORS/HTTP Proxy endpoint set up in aerobatic.yml
 // data format documentation: http://www.ndbc.noaa.gov/measdes.shtml
 // split 3rd line by space
-fetch('https://seattletide.aerobatic.io/wpow1', {
+const cacheBuster = new Date().toISOString()
+fetch('https://seattletide.aerobatic.io/wpow1?' + cacheBuster, {
   mode: 'cors'
 }).then(function(res) {
   return res.text()
