@@ -4,7 +4,8 @@
   "description": "A little web app that tells you the weather conditions in Ballard, Seattle",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "deploy": "sls deploy"
   },
   "repository": {
     "type": "git",
@@ -23,6 +24,12 @@
   "homepage": "https://github.com/ivanoats/SeattleTide#readme",
   "dependencies": {
     "express": "^4.16.2",
+    "request": "^2.83.0",
+    "request-promise-native": "^1.0.5",
     "serverless-http": "^1.5.3"
+  },
+  "devDependencies": {
+    "eslint": "^4.17.0",
+    "eslint-config-prettier": "^2.9.0"
   }
 }

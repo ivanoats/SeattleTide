@@ -1,2 +1,4 @@
 aero-deploy.tar.gz
 aero-debug.log
+.serverless
+.vscode
