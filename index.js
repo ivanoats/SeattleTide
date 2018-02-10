@@ -12,9 +12,13 @@ app.get("/wpow1", function(req, res) {
   // requestWeatherInfo.then(function() {
   //   res.send("foo");
   // });
-  requestp(domain).then(function(text) {
-    res.send(text);
-  });
+  requestp(domain)
+    .then(function(text) {
+      res.send(text);
+    })
+    .error(function(err) {
+      console.log(error);
+    });
 });
 
 module.exports.handler = serverless(app);
