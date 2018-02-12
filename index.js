@@ -10,11 +10,18 @@ const domain = "https://api.weather.gov/stations/WPOW1/observations";
 // };
 
 app.get("/wpow1", function(req, res) {
-  requestp(domain)
+  requestp({
+    uri: domain,
+    headers: {
+      "User-Agent": "seattletide",
+      Accept: "application/geo+json"
+    },
+    json: true
+  })
     .then(function(text) {
-      res.send(text);
+      res.json(text);
     })
-    .error(function(err) {
+    .catch(function(err) {
       console.log(error);
     });
 });
