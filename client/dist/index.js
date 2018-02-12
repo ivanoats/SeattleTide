@@ -1,11 +1,6 @@
-// fetch http://www.ndbc.noaa.gov/data/realtime2/WPOW1.txt
-// using Aerobatic CORS/HTTP Proxy endpoint set up in aerobatic.yml
-// data format documentation: http://www.ndbc.noaa.gov/measdes.shtml
-// split 3rd line by space
-const domain = "https://seattletide.aerobaticapp.com";
-const endpoint = "wpow1?";
+const domain = "https://api.weather.gov/stations/WPOW1/observations";
 const cacheBuster = new Date().toISOString();
-fetch(domain + endpoint + cacheBuster, {
+fetch(domain + "?" + cacheBuster, {
   mode: "cors"
 })
   .then(function(res) {
@@ -13,26 +8,22 @@ fetch(domain + endpoint + cacheBuster, {
   })
   .then(function(conditions) {
     //process the lines of the text file
-    const conditionsLines = conditions.split("\n");
-    const currentConditions = conditionsLines[2];
-    const fixedCurrentConditions = currentConditions.replace(/  */g, " ");
-    //process the columns of the line of text
-    const currentConditionsArray = fixedCurrentConditions.split(" ");
-    window.res = currentConditionsArray;
-    const direction = currentConditionsArray[5];
+    window.res = JSON.parse(conditions).features[0].properties;
+    const currentConditions = JSON.parse(conditions).features[0].properties;
+    const direction = currentConditions.windDirection.value;
     // speed and gust are provided in meters per second
     // multiply by 2.236936 to get miles per hour (or round up)
     const convertMetersPerSecondToMilesPerHour = 2.24;
     const speed =
-      currentConditionsArray[6] * convertMetersPerSecondToMilesPerHour;
+      currentConditions.windSpeed.value * convertMetersPerSecondToMilesPerHour;
     const gust =
-      currentConditionsArray[7] * convertMetersPerSecondToMilesPerHour;
-    const barometer = currentConditionsArray[12];
+      currentConditions.windGust.value * convertMetersPerSecondToMilesPerHour;
+    const barometer = currentConditions.barometricPressure.value; // null?
     // temp is provided in degrees Celcius
     const convertCtoF = function convert(c) {
       return c * (9 / 5) + 32;
     };
-    const temp = convertCtoF(currentConditionsArray[13]);
+    const temp = convertCtoF(currentConditions.temperature.value);
     const round = function round(x) {
       return Math.round(x * 100) / 100;
     };

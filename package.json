@@ -4,8 +4,9 @@
   "description": "A little web app that tells you the weather conditions in Ballard, Seattle",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "sls deploy"
+    "deploy": "sls deploy",
+    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -23,13 +24,25 @@
   },
   "homepage": "https://github.com/ivanoats/SeattleTide#readme",
   "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
     "express": "^4.16.2",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
     "serverless-http": "^1.5.3"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-3": "^6.24.1",
     "eslint": "^4.17.0",
-    "eslint-config-prettier": "^2.9.0"
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-config-standard": "^11.0.0-beta.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-promise": "^3.6.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "serverless-plugin-webpack": "^1.4.0",
+    "webpack": "^3.11.0"
   }
 }

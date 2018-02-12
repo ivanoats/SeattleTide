@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Meadow and West Points — Tide and Weather</title>
@@ -7,9 +8,9 @@
   <link rel="stylesheet" href="https://unpkg.com/purecss@0.6.2/build/grids-responsive-min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-  .pad {
-    padding: 0 20px 0 20px;
-  }
+    .pad {
+      padding: 0 20px 0 20px;
+    }
   </style>
   <!-- http://realfavicongenerator.net -->
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -27,29 +28,41 @@
   <meta property="og:description" content="Tide for Meadow Point and wind from West Point">
   <meta property="og:url" content="http://seattletide.aerobatic.io">
 </head>
+
 <body>
   <div class="pure-g">
-      <div class="pure-u-1 pure-u-md-3-5">
-        <h2 class="pad">Meadow Point Tide Chart</h2>
-        <p class="pad">Otherwise known as Golden Gardens. In the Ballard neighborhood of Seattle, WA</p>
-        <script src="//tides.tidegraph.com/api/tidegraph.php?bg=white&scale=1&color=black&lat=47.6733790&lng=-122.4076660"></script>
-      </div>
+    <div class="pure-u-1 pure-u-md-3-5">
+      <h2 class="pad">Meadow Point Tide Chart</h2>
+      <p class="pad">Otherwise known as Golden Gardens. In the Ballard neighborhood of Seattle, WA</p>
+      <script src="//tides.tidegraph.com/api/tidegraph.php?bg=white&scale=1&color=black&lat=47.6733790&lng=-122.4076660"></script>
+    </div>
     <div class="pure-u-1 pure-u-md-2-5">
       <h2 class="pad">West Point Wind and Weather</h2>
       <div id="wpow">
         <ul>
-          <li>Wind direction: <span id="direction"></span>º</li>
-          <li>Wind speed: <span id="speed"></span> mph</li>
-          <li>Wind gusts: <span id="gust"></span> mph</li>  
-          <li>Temperature: <span id="temp"></span>º F</li>
+          <li>Wind direction:
+            <span id="direction"></span>º</li>
+          <li>Wind speed:
+            <span id="speed"></span> mph</li>
+          <li>Wind gusts:
+            <span id="gust"></span> mph</li>
+          <li>Temperature:
+            <span id="temp"></span>º F</li>
         </ul>
-        <a href="http://www.ndbc.noaa.gov/station_page.php?station=wpow1">Full station info</a>
-        <img style="height: 250px" class="pure-img" src="compass2.png">
-        <p><a href="https://www.weather.gov/disclaimer">Disclaimer</a>: Information provided is for entertainment only. Do not make critical decisions based on this data. Always assess real-life conditions, wear a PFD, and use your SUP leash.</p>
-        <a href="https://standuppaddletheworld.com"><img class="pure-img" src="pfdleash.jpg"></a>
+        <p class="pad">
+          <a href="http://www.ndbc.noaa.gov/station_page.php?station=wpow1">Full station info</a>
+          <img style="height: 250px" class="pure-img" src="compass2.png">
+        </p>
+        <p class="pad">
+          <a href="https://www.weather.gov/disclaimer">Disclaimer</a>: Information provided is for entertainment only. Do not make critical decisions based on this data.
+          Always assess real-life conditions, wear a PFD, and use your SUP leash.</p>
+        <a href="https://standuppaddletheworld.com">
+          <img class="pure-img" src="pfdleash.jpg">
+        </a>
       </div>
     </div>
   </div>
   <script src="index.js"></script>
 </body>
+
 </html>

@@ -1,5 +1,8 @@
 service: tidewidget-server
 
+plugins:
+  - serverless-plugin-webpack
+
 provider:
   name: aws
   runtime: nodejs6.10
