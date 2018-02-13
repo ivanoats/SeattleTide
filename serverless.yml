@@ -3,6 +3,12 @@ service: tidewidget-server
 plugins:
   - serverless-plugin-webpack
   - serverless-offline
+  - serverless-finch
+
+custom:
+  client:
+    bucketName: westpointwind
+    distributionFolder: client/dist
 
 provider:
   name: aws
