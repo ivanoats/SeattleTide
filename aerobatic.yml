@@ -1,6 +1,6 @@
 deploy:
   ignore: []
-  directory: client/dist
+  directory: client/aero-redirect
 plugins:
   - name: webpage
 id: 9c211241-8d7b-4999-966d-7887c73d9c72

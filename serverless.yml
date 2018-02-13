@@ -4,11 +4,17 @@ plugins:
   - serverless-plugin-webpack
   - serverless-offline
   - serverless-finch
+  - serverless-domain-manager
 
 custom:
   client:
     bucketName: westpointwind
     distributionFolder: client/dist
+  customDomain:
+    domainName: api.westpointwind.com
+    certificateName: "*.westpointwind.com"
+    createRoute53Record: true
+    endpointType: regional
 
 provider:
   name: aws
