@@ -2,6 +2,7 @@ service: tidewidget-server
 
 plugins:
   - serverless-plugin-webpack
+  - serverless-offline
 
 provider:
   name: aws

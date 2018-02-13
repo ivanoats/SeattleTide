@@ -42,6 +42,7 @@
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-promise": "^3.6.0",
     "eslint-plugin-standard": "^3.0.1",
+    "serverless-offline": "^3.17.0",
     "serverless-plugin-webpack": "^1.4.0",
     "webpack": "^3.11.0"
   }
