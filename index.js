@@ -5,9 +5,14 @@ const app = express();
 const tabSeparated = "http://www.ndbc.noaa.gov/data/realtime2/WPOW1.txt";
 const domain = "https://api.weather.gov/stations/WPOW1/observations";
 
-// const requestWeatherInfo = function() {
-// return; // a promise
-// };
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
 
 app.get("/wpow1", function(req, res) {
   requestp({

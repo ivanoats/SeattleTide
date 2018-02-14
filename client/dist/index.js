@@ -1,4 +1,5 @@
-const domain = "https://api.weather.gov/stations/WPOW1/observations";
+const usdomain = "https://api.weather.gov/stations/WPOW1/observations";
+const domain = "https://api.westpointwind.com/wpow1";
 const cacheBuster = new Date().toISOString();
 fetch(domain + "?" + cacheBuster, {
   mode: "cors"
