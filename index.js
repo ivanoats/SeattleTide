@@ -24,7 +24,7 @@ app.get("/wpow1", function(req, res) {
     json: true
   })
     .then(function(text) {
-      res.json(text);
+      res.json(text.features[0].properties);
     })
     .catch(function(err) {
       console.log(error);

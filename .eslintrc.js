@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ["standard", "prettier", "pretier/standard"],
+  extends: ["standard", "prettier", "pretier-standard"],
   env: {
     browser: true,
     es6: true,
