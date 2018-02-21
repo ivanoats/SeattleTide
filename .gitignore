@@ -4,3 +4,4 @@ aero-debug.log
 .vscode
 client/tmp
 client/dist/tmp
+node_modules
