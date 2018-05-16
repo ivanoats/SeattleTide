@@ -27,18 +27,18 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
     "express": "^4.16.3",
-    "request": "^2.85.0",
+    "request": "^2.86.0",
     "request-promise": "^4.2.2",
     "serverless-finch": "^2.1.2",
     "serverless-http": "^1.5.5"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-preset-env": "^1.6.1",
+    "babel-preset-env": "^1.7.0",
     "babel-preset-stage-3": "^6.24.1",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-config-prettier-standard": "^1.0.1",
+    "eslint-config-prettier-standard": "^2.0.0",
     "eslint-config-standard": "^11.0.0-beta.0",
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-node": "^6.0.1",
@@ -47,7 +47,7 @@
     "eslint-plugin-standard": "^3.1.0",
     "prettier": "^1.12.1",
     "serverless-domain-manager": "^2.3.6",
-    "serverless-offline": "^3.20.3",
+    "serverless-offline": "^3.21.1",
     "serverless-plugin-webpack": "^1.5.1",
     "webpack": "^3.11.0"
   }
