@@ -1,6 +1,6 @@
 let uri = 'https://api.westpointwind.com/wpow1'
-if (location.host === 'localhost:8000' || location.host === '127.0.0.1:8000')
-  uri = 'http://localhost:3000/wpow1'
+// if (location.host === 'localhost:8000' || location.host === '127.0.0.1:8000')
+//  uri = 'http://localhost:3000/wpow1'
 const cacheBuster = new Date().toISOString()
 fetch(uri + '?' + cacheBuster, {
   mode: 'cors'
