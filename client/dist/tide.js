@@ -13,7 +13,9 @@ fetch(currentTideUri, {
   })
 
 const predictionsUri =
-  'https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=westpointwinddotcom&date=latest&datum=MLLW&station=9447130&time_zone=lst_ldt&units=english&interval=hilo&format=json'
+  // 'https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=westpointwinddotcom&date=latest&datum=MLLW&station=9447130&time_zone=lst_ldt&units=english&interval=hilo&format=json'
+  'https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=westpointwinddotcom&begin_date=20180910&end_date=20180911&datum=MLLW&station=9447130&time_zone=lst_ldt&units=english&interval=hilo&format=json'
+
 fetch(predictionsUri, {
   mode: 'cors'
 })
