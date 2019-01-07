@@ -21,6 +21,7 @@ fetch(uri + '?' + cacheBuster, {
 
     // Process the lines of the text file
     const direction = conditions.windDirection.value || 'Not Available'
+    const directionWithArrow = `${direction}º <span style="display: inline-block; margin-left: 5px; transform: rotate(${direction}deg);">↓</span>`
 
     // Wind Speed
     // speed and gust are provided in meters per second
@@ -55,7 +56,7 @@ fetch(uri + '?' + cacheBuster, {
     }
 
     // Update the html elements
-    document.getElementById('direction').innerText = direction
+    document.getElementById('direction').innerHTML = directionWithArrow
     document.getElementById('speed').innerText = speed
     document.getElementById('gust').innerText = gust
     document.getElementById('temp').innerText = temp
