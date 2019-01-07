@@ -5,3 +5,4 @@ aero-debug.log
 client/tmp
 client/dist/tmp
 node_modules
+bower_components

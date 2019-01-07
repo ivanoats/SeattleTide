@@ -28,6 +28,7 @@
   <meta property="og:title" content="Elks Paddle Club Tide and Wind">
   <meta property="og:description" content="Tide for Meadow Point and wind from West Point">
   <link href="//cdn.muicss.com/mui-0.9.41/css/mui.min.css" rel="stylesheet" type="text/css" />
+  <link href="spinner.css" rel="stylesheet" type="text/css" />
   <script src="//cdn.muicss.com/mui-0.9.41/js/mui.min.js"></script> <meta property="og:url" content="https://westpointwind.com">
 </head>
 
@@ -42,13 +43,21 @@
       <div id="wpow" class="pad">
         <ul class="mui-list--unstyled">
           <li>Wind direction:
-            <span id="direction"></span>º</li>
+            <span id="direction">
+              <span class="spinner-loader">Loading…</span>
+            </span>º</li>
           <li>Wind speed:
-            <span id="speed"></span> mph</li>
+            <span id="speed">
+              <span class="spinner-loader">Loading…</span>
+            </span> mph</li>
           <li>Wind gusts:
-            <span id="gust"></span> mph</li>
+            <span id="gust">
+              <span class="spinner-loader">Loading…</span>
+            </span> mph</li>
           <li>Temperature:
-            <span id="temp"></span>º F</li>
+            <span id="temp">
+              <span class="spinner-loader">Loading…</span>
+            </span>º F</li>
         </ul>
         <p>
           <a href="http://www.ndbc.noaa.gov/station_page.php?station=wpow1">Full station info (not mobile friendly)</a>
