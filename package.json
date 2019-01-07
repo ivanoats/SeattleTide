@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "deploy": "sls deploy",
+    "client": "serve client/dist -l 3001",
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,6 +28,7 @@
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "express": "^4.16.3",
+    "lodash": "^4.17.11",
     "request": "^2.87.0",
     "request-promise": "^4.2.2",
     "serverless-finch": "^2.2.0",
@@ -45,7 +47,9 @@
     "eslint-plugin-prettier": "^2.6.2",
     "eslint-plugin-promise": "^3.8.0",
     "eslint-plugin-standard": "^3.1.0",
-    "prettier": "^1.14.0",
+    "live-server": "^1.2.1",
+    "prettier": "^1.15.3",
+    "serve": "^10.1.1",
     "serverless-domain-manager": "^2.6.0",
     "serverless-offline": "^3.25.6",
     "serverless-plugin-webpack": "^1.5.1",

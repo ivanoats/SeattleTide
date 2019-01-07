@@ -25,6 +25,7 @@ app.get('/wpow1', function(req, res) {
   })
     .then(function(text) {
       res.json(text.features[0].properties)
+      console.log(text.features[0].properties)
     })
     .catch(function(err) {
       console.log(err)

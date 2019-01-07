@@ -16,7 +16,7 @@ module.exports = {
             [
               'env',
               {
-                target: { node: '6.10' },
+                target: { node: '8.10' },
                 useBuiltIns: true,
                 modules: false,
                 loose: true
