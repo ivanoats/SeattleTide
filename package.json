@@ -8,7 +8,8 @@
     "deploy-client": "serverless client deploy --region us-west-2",
     "client": "serve client/dist -l 3001",
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "serverless offline start"
   },
   "repository": {
     "type": "git",
@@ -28,31 +29,31 @@
   "dependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
-    "express": "^4.16.3",
+    "express": "^4.16.4",
     "lodash": "^4.17.11",
-    "request": "^2.87.0",
+    "request": "^2.88.0",
     "request-promise": "^4.2.2",
-    "serverless-finch": "^2.2.0",
-    "serverless-http": "^1.6.0"
+    "serverless-finch": "^2.3.2",
+    "serverless-http": "^1.8.0"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-3": "^6.24.1",
-    "eslint": "^5.2.0",
-    "eslint-config-prettier": "^2.9.0",
+    "eslint": "^5.12.0",
+    "eslint-config-prettier": "^3.3.0",
     "eslint-config-prettier-standard": "^2.0.0",
-    "eslint-config-standard": "^11.0.0",
-    "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-node": "^7.0.1",
-    "eslint-plugin-prettier": "^2.6.2",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-standard": "^3.1.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
     "live-server": "^1.2.1",
     "prettier": "^1.15.3",
     "serve": "^10.1.1",
-    "serverless-domain-manager": "^2.6.0",
-    "serverless-offline": "^3.25.6",
+    "serverless-domain-manager": "^2.6.10",
+    "serverless-offline": "^3.32.1",
     "serverless-plugin-webpack": "^1.5.1",
     "webpack": "^3.11.0"
   }

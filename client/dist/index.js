@@ -55,9 +55,18 @@ fetch(uri + '?' + cacheBuster, {
       temp = round(convertCtoF(conditions.temperature.value))
     }
 
+    // Pressure
+    let pressure
+    if (conditions.seaLevelPressure.value == null) {
+      pressure = 'Not Available'
+    } else {
+      pressure = round(conditions.seaLevelPressure.value / 100)
+    }
+
     // Update the html elements
     document.getElementById('direction').innerHTML = directionWithArrow
     document.getElementById('speed').innerText = speed
     document.getElementById('gust').innerText = gust
     document.getElementById('temp').innerText = temp
+    document.getElementById('pressure').innerText = pressure
   })
