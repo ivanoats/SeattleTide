@@ -17,8 +17,14 @@ const predictionsUri =
   'https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=westpointwinddotcom&begin_date=20180910&end_date=20180911&datum=MLLW&station=9447130&time_zone=lst_ldt&units=english&interval=hilo&format=json'
 
 const NWSDateToJSDate = nwsdate => {
-  const jsdate = new Date(nwsdate)
-  return `${jsdate.toLocaleDateString()} ${jsdate.toLocaleTimeString()}`
+  let jsdate
+  if (isNaN(Date.parse(nwsdate))) {
+    return nwsdate
+  } else {
+    jsdate = new Date(nwsdate)
+    const formattedDate = `${jsdate.toLocaleDateString()} ${jsdate.toLocaleTimeString()}`
+    return formattedDate
+  }
 }
 
 fetch(predictionsUri, {
