@@ -13,8 +13,7 @@ fetch(currentTideUri, {
   })
 
 const predictionsUri =
-  // 'https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=westpointwinddotcom&date=latest&datum=MLLW&station=9447130&time_zone=lst_ldt&units=english&interval=hilo&format=json'
-  'https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=westpointwinddotcom&begin_date=20180910&end_date=20180911&datum=MLLW&station=9447130&time_zone=lst_ldt&units=english&interval=hilo&format=json'
+  'https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=westpointwinddotcom&date=latest&datum=MLLW&station=9447130&time_zone=lst_ldt&units=english&interval=hilo&format=json'
 
 const NWSDateToJSDate = nwsdate => {
   let jsdate
@@ -39,11 +38,16 @@ fetch(predictionsUri, {
     const nextTide = `${NWSDateToJSDate(predictions.predictions[0].t)} ${
       predictions.predictions[0].v
     } ft ${predictions.predictions[0].type}`
-    const nextTideAfter = `${NWSDateToJSDate(predictions.predictions[1].t)} ${
-      predictions.predictions[1].v
-    } ft ${predictions.predictions[1].type}`
+    let nextTideAfter
+    if (predictions.predictions.length > 1) {
+      nextTideAfter = `${NWSDateToJSDate(predictions.predictions[1].t)} ${
+        predictions.predictions[1].v
+      } ft ${predictions.predictions[1].type}`
+    } else {
+      nextTideAfter = 'Unavailable'
+    }
     document.getElementById('next-tide').innerHTML = `<ul>
-   <li>${nextTide} </li>
-   <li>${nextTideAfter} </li>
+      <li>${nextTide} </li>
+      <li>${nextTideAfter} </li>
     </ul>`
   })
