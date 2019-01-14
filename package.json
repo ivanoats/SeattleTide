@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "deploy": "sls deploy",
-    "deploy-client": "serverless client deploy --region us-west-2 && aws cloudfront create-invalidation --distribution-id E13JOGYJXQZL0I --paths /*",
+    "deploy-client": "serverless client deploy --region us-west-2 && aws cloudfront create-invalidation --distribution-id E13JOGYJXQZL0I --paths ./client/dist/*",
     "client": "serve client/dist -l 3001",
     "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
     "test": "echo \"Error: no test specified\" && exit 1",
