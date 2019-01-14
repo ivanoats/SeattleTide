@@ -34,6 +34,10 @@ fetch(predictionsUri, {
   })
   .then(function(jsontxt) {
     const predictions = JSON.parse(jsontxt)
+    if (predictions.error) {
+      document.getElementById('next-tide').innerText = `Unavailable`
+      return
+    }
     window.predictions = predictions.predictions
     const nextTide = `${NWSDateToJSDate(predictions.predictions[0].t)} ${
       predictions.predictions[0].v
