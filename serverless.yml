@@ -1,6 +1,6 @@
 ---
 service: tidewidget-server
-app: app
+app: westpointwind
 tenant: ivanoats
 
 plugins:
@@ -15,9 +15,9 @@ custom:
     distributionFolder: client/dist
   customDomain:
     domainName: api.westpointwind.com
-    basePath: ''
+    basePath: ""
     stage: ${self:provider.stage}
-    certificateName: '*.westpointwind.com'
+    certificateName: "*.westpointwind.com"
     createRoute53Record: true
     endpointType: regional
 
@@ -32,7 +32,7 @@ functions:
     handler: index.handler
     events:
       - http: ANY /
-      - http: 'ANY {proxy+}'
+      - http: "ANY {proxy+}"
     cors:
       - enabled: true
         origin: "*"
