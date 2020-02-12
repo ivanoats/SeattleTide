@@ -30,6 +30,8 @@
   <link href="//cdn.muicss.com/mui-0.9.41/css/mui.min.css" rel="stylesheet" type="text/css" />
   <link href="spinner.css" rel="stylesheet" type="text/css" />
   <script src="//cdn.muicss.com/mui-0.9.41/js/mui.min.js"></script> <meta property="og:url" content="https://westpointwind.com">
+  <script src='https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js'></script>
+  <link href='https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 
 <body>
@@ -81,6 +83,19 @@
     </div>
     <div class="mui-panel">
       <img style="width: 100%" src="https://www.ndbc.noaa.gov/plot_wind_pres.php?station=wpow1&uom=E&time_diff=-8&time_label=PST" />
+    </div>
+    <div class="mui-panel">
+      <div id='map' style='width: 100%; height: 300px;'></div>
+       <script>
+        mapboxgl.accessToken = 'pk.eyJ1Ijoic3RvcmNrcGhvdG9zIiwiYSI6ImNrNmp3eXlyMjAwcnUzc3BsZ3A4a296MWwifQ.uO0hWTVSBIPWoi6M2n239w';
+        var map = new mapboxgl.Map({
+          container: 'map',
+          style: 'mapbox://styles/mapbox/outdoors-v11',
+          center: [-122.436,47.662],
+          zoom: 11
+        });
+        map.addControl(new mapboxgl.NavigationControl());
+       </script>
     </div>
     <div class="mui-panel">
         <p>
