@@ -95,6 +95,35 @@
           zoom: 11
         });
         map.addControl(new mapboxgl.NavigationControl());
+        map.on("load", function () {
+          map.loadImage('images/icons8-wind-50.png', function(error, image){
+            if (error) throw error;
+            map.addImage("custom-marker", image);
+            map.addLayer({
+              id: "markers",
+              type: "symbol",
+              source: {
+                type: "geojson",
+                data: {
+                  type: 'FeatureCollection',
+                  features: [
+                  {
+                    type: 'Feature', 
+                    properties: {},
+                    geometry: {
+                      type: "Point",
+                      coordinates: [-122.436, 47.662]
+                    }
+                  }
+                  ]
+                }
+              },
+              layout: {
+                "icon-image": "custom-marker"
+              }
+            })
+          })
+        })
        </script>
     </div>
     <div class="mui-panel">
