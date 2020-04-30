@@ -12,8 +12,28 @@ fetch(currentTideUri, {
     document.getElementById('current-tide').innerText = currentTide.v
   })
 
-const predictionsUri =
-  'https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=westpointwinddotcom&date=latest&datum=MLLW&station=9447130&time_zone=lst_ldt&units=english&interval=hilo&format=json'
+const leadingZero = num => {
+  return `${num}`.length === 1 ? `0` + num : num
+}
+
+const today = new Date()
+const tomorrow = new Date()
+tomorrow.setDate(tomorrow.getDate() + 1)
+const tomorrowDay = tomorrow.getDate()
+const tomorrowMonth = tomorrow.getMonth() + 1
+const formattedTomorrowMonth = leadingZero(tomorrowMonth)
+const formattedTomorrowDay = leadingZero(tomorrowDay)
+
+const year = today.getFullYear()
+const day = today.getDate()
+const formattedDay = leadingZero(day)
+
+const month = today.getMonth() + 1
+const formattedMonth = leadingZero(month)
+const beginDate = `${year}${formattedMonth}${formattedDay}`
+const endDate = `${year}${formattedTomorrowMonth}${formattedTomorrowDay}`
+
+const predictionsUri = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=westpointwinddotcom&begin_date=${beginDate}&end_date=${endDate}&datum=MLLW&station=9447130&time_zone=lst_ldt&units=english&interval=hilo&format=json`
 
 const NWSDateToJSDate = nwsdate => {
   let jsdate
@@ -35,10 +55,11 @@ fetch(predictionsUri, {
   .then(function(jsontxt) {
     const predictions = JSON.parse(jsontxt)
     if (predictions.error) {
-      document.getElementById('next-tide').innerText = `Unavailable`
+      document.getElementById(
+        'next-tide'
+      ).innerText = `Error retreiving tide prediction`
       return
     }
-    window.predictions = predictions.predictions
     const nextTide = `${NWSDateToJSDate(predictions.predictions[0].t)} ${
       predictions.predictions[0].v
     } ft ${predictions.predictions[0].type}`
