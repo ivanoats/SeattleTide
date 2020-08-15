@@ -1,7 +1,7 @@
 ---
 service: tidewidget-server
 app: westpointwind
-tenant: ivanoats
+org: ivanoats
 
 plugins:
   - serverless-plugin-webpack
@@ -16,14 +16,15 @@ custom:
   customDomain:
     domainName: api.westpointwind.com
     basePath: ""
-    stage: ${self:provider.stage}
+    stage: provider.stage
     certificateName: "*.westpointwind.com"
     createRoute53Record: true
+    apiType: rest
     endpointType: regional
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs12.x
   stage: dev
   region: us-east-1
 

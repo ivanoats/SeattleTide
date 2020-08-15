@@ -14,15 +14,11 @@ module.exports = {
         query: {
           presets: [
             [
-              'env',
+              '@babel/preset-env',
               {
-                target: { node: '8.10' },
-                useBuiltIns: true,
-                modules: false,
                 loose: true
               }
-            ],
-            'stage-3'
+            ]
           ]
         }
       }
