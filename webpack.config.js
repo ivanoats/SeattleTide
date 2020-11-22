@@ -1,26 +1,18 @@
+const slsw = require('serverless-webpack')
+
 module.exports = {
-  // entry: set by the sls plugin
-  // output: set by the sls plugin
+  entry: slsw.lib.entries,
   target: 'node',
   externals: [
     /aws-sdk/ // available on AWS Lambda
   ],
+  mode: 'production',
   module: {
     rules: [
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader',
-        query: {
-          presets: [
-            [
-              '@babel/preset-env',
-              {
-                loose: true
-              }
-            ]
-          ]
-        }
+        use: ['babel-loader']
       }
     ]
   }

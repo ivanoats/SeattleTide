@@ -4,7 +4,7 @@ app: westpointwind
 org: ivanoats
 
 plugins:
-  - serverless-plugin-webpack
+  - serverless-webpack
   - serverless-offline
   - serverless-finch
   - serverless-domain-manager
@@ -16,13 +16,15 @@ custom:
   customDomain:
     domainName: api.westpointwind.com
     basePath: ""
-    stage: provider.stage
+    # stage: provider.stage
     certificateName: "*.westpointwind.com"
     createRoute53Record: true
     apiType: rest
     endpointType: regional
 
 provider:
+  apiGateway:
+    shouldStartNameWithService: true
   name: aws
   runtime: nodejs12.x
   stage: dev
@@ -30,7 +32,7 @@ provider:
 
 functions:
   app:
-    handler: index.handler
+    handler: src/index.handler
     events:
       - http:
           path: wpow1
