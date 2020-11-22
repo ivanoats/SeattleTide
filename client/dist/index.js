@@ -10,10 +10,10 @@ const round = function round(x) {
 fetch(uri + '?' + cacheBuster, {
   mode: 'cors'
 })
-  .then(function(res) {
+  .then(function (res) {
     return res.text()
   })
-  .then(function(jsontxt) {
+  .then(function (jsontxt) {
     const conditions = JSON.parse(jsontxt)
 
     // DEBUG info

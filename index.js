@@ -5,7 +5,7 @@ const app = express()
 // const tabSeparated = 'http://www.ndbc.noaa.gov/data/realtime2/WPOW1.txt'
 const domain = 'https://api.weather.gov/stations/WPOW1/observations'
 
-app.use(function(req, res, next) {
+app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
   res.header(
     'Access-Control-Allow-Headers',
@@ -14,7 +14,7 @@ app.use(function(req, res, next) {
   next()
 })
 
-app.get('/wpow1', function(req, res) {
+app.get('/wpow1', function (req, res) {
   requestp({
     uri: domain,
     headers: {
@@ -23,11 +23,11 @@ app.get('/wpow1', function(req, res) {
     },
     json: true
   })
-    .then(function(text) {
+    .then(function (text) {
       res.json(text.features[0].properties)
       console.log(text.features[0].properties)
     })
-    .catch(function(err) {
+    .catch(function (err) {
       console.log(err)
     })
 })
