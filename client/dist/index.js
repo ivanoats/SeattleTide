@@ -1,6 +1,6 @@
 let uri = 'https://api.westpointwind.com/wpow1'
 if (location.host === 'localhost:3001' || location.host === '127.0.0.1:3001')
-  uri = 'http://localhost:3000/wpow1'
+  uri = 'http://localhost:3000/dev/wpow1'
 const cacheBuster = new Date().toISOString()
 const round = function round(x) {
   if (isNaN(x)) return x
@@ -14,13 +14,13 @@ fetch(uri + '?' + cacheBuster, {
     return res.text()
   })
   .then(function (jsontxt) {
-    const conditions = JSON.parse(jsontxt)
+    const conditions = JSON.parse(jsontxt).weatherConditions
 
     // DEBUG info
     window.res = conditions
 
     // Process the lines of the text file
-    const direction = conditions.windDirection.value || 'Not Available'
+    const direction = conditions.windDirection || 'Not Available'
     const directionWithArrow = `${direction}º <span style="display: inline-block; margin-left: 5px; transform: rotate(${direction}deg);">↓</span>`
 
     // Wind Speed
@@ -28,20 +28,16 @@ fetch(uri + '?' + cacheBuster, {
     // multiply by 2.236936 to get miles per hour (or round up)
     const convertMetersPerSecondToMilesPerHour = 2.24
     let speed, gust
-    if (conditions.windSpeed.value == null) {
+    if (conditions.windSpeed == null) {
       console.log('wind speed not available')
       speed = 'Not Available'
     } else {
-      speed = round(
-        conditions.windSpeed.value * convertMetersPerSecondToMilesPerHour
-      )
+      speed = round(conditions.windSpeed * convertMetersPerSecondToMilesPerHour)
     }
-    if (conditions.windGust.value == null) {
+    if (conditions.windGust == null) {
       gust = 'Not Available'
     } else {
-      gust = round(
-        conditions.windGust.value * convertMetersPerSecondToMilesPerHour
-      )
+      gust = round(conditions.windGust * convertMetersPerSecondToMilesPerHour)
     }
 
     // Temperature is provided in degrees Celcius
@@ -49,18 +45,18 @@ fetch(uri + '?' + cacheBuster, {
       return c * (9 / 5) + 32
     }
     let temp
-    if (conditions.temperature.value == null) {
+    if (conditions.temperature == null) {
       temp = 'Not Available'
     } else {
-      temp = round(convertCtoF(conditions.temperature.value))
+      temp = round(convertCtoF(conditions.temperature))
     }
 
     // Pressure
     let pressure
-    if (conditions.seaLevelPressure.value == null) {
+    if (conditions.seaLevelPressure == null) {
       pressure = 'Not Available'
     } else {
-      pressure = round(conditions.seaLevelPressure.value / 100)
+      pressure = round(conditions.seaLevelPressure / 100)
     }
 
     // Update the html elements
