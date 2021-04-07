@@ -24,20 +24,17 @@ fetch(uri + '?' + cacheBuster, {
     const directionWithArrow = `${direction}º <span style="display: inline-block; margin-left: 5px; transform: rotate(${direction}deg);">↓</span>`
 
     // Wind Speed
-    // speed and gust are provided in meters per second
-    // multiply by 2.236936 to get miles per hour (or round up)
-    const convertMetersPerSecondToMilesPerHour = 2.24
     let speed, gust
     if (conditions.windSpeed == null) {
       console.log('wind speed not available')
       speed = 'Not Available'
     } else {
-      speed = round(conditions.windSpeed * convertMetersPerSecondToMilesPerHour)
+      speed = round(conditions.windSpeed)
     }
     if (conditions.windGust == null) {
       gust = 'Not Available'
     } else {
-      gust = round(conditions.windGust * convertMetersPerSecondToMilesPerHour)
+      gust = round(conditions.windGust)
     }
 
     // Temperature is provided in degrees Celcius
