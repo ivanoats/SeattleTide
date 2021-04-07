@@ -3,16 +3,16 @@ const currentTideUri =
 fetch(currentTideUri, {
   mode: 'cors'
 })
-  .then(function(res) {
+  .then(function (res) {
     return res.text()
   })
-  .then(function(jsontxt) {
+  .then(function (jsontxt) {
     const tide = JSON.parse(jsontxt)
     const currentTide = tide.data[tide.data.length - 1]
     document.getElementById('current-tide').innerText = currentTide.v
   })
 
-const leadingZero = num => {
+const leadingZero = (num) => {
   return `${num}`.length === 1 ? `0` + num : num
 }
 
@@ -35,7 +35,7 @@ const endDate = `${year}${formattedTomorrowMonth}${formattedTomorrowDay}`
 
 const predictionsUri = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=westpointwinddotcom&begin_date=${beginDate}&end_date=${endDate}&datum=MLLW&station=9447130&time_zone=lst_ldt&units=english&interval=hilo&format=json`
 
-const NWSDateToJSDate = nwsdate => {
+const NWSDateToJSDate = (nwsdate) => {
   let jsdate
   if (isNaN(Date.parse(nwsdate))) {
     return nwsdate
@@ -49,10 +49,10 @@ const NWSDateToJSDate = nwsdate => {
 fetch(predictionsUri, {
   mode: 'cors'
 })
-  .then(function(res) {
+  .then(function (res) {
     return res.text()
   })
-  .then(function(jsontxt) {
+  .then(function (jsontxt) {
     const predictions = JSON.parse(jsontxt)
     if (predictions.error) {
       document.getElementById(

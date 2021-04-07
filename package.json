@@ -7,7 +7,9 @@
     "deploy": "sls deploy",
     "deploy-client": "serverless client deploy --region us-west-2 && aws cloudfront create-invalidation --distribution-id E13JOGYJXQZL0I --paths \"/*\"",
     "client": "live-server client/dist -l 3001",
-    "eslint-check": "eslint --print-config .eslintrc.js | eslint-config-prettier-check",
+    "lint": "eslint client/**/*.js src/**/*.js",
+    "lint:fix": "eslint client/**/*.js src/**/*.js --fix",
+    "eslint-check": "npx eslint-config-prettier .eslintrc.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "serve": "serverless offline start"
   },
