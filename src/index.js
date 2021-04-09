@@ -2,6 +2,7 @@ const serverless = require('serverless-http')
 const express = require('express')
 const got = require('got')
 const parse = require('csv-parse/lib/sync')
+const { resetErrorsCount } = require('ajv/dist/compile/errors')
 
 function metersPerSecondToMph(ms) {
   return ms * 2.23694
@@ -21,9 +22,11 @@ app.use(function (req, res, next) {
 })
 
 app.get('/wpow1', async function (req, res) {
+  const errors = []
+  const observations = {}
   const station = req.query.station || 'WPOW1'
   try {
-    const { body } = await got(`https://sdf.ndbc.noaa.gov/sos/server.php`, {
+    const windBody = await got(`https://sdf.ndbc.noaa.gov/sos/server.php`, {
       searchParams: {
         request: 'GetObservation',
         service: 'SOS',
@@ -33,15 +36,13 @@ app.get('/wpow1', async function (req, res) {
         responseformat: 'text/csv',
         eventtime: 'latest'
       }
-    })
-    const records = parse(body, {
+    }).body
+    const records = parse(windBody, {
       columns: true
     })
     console.log(records)
-
     const weatherData = records[0]
-
-    const weatherConditions = {
+    const windConditions = {
       stationId: weatherData.station_id,
       windSpeed: metersPerSecondToMph(
         parseInt(weatherData['wind_speed (m/s)'])
@@ -51,12 +52,33 @@ app.get('/wpow1', async function (req, res) {
         parseInt(weatherData['wind_speed_of_gust (m/s)'])
       )
     }
+    observations.windConditions = windConditions
+  } catch (error) {
+    errors.push(error)
+  }
+  try {
+    const tempBody = await got(`https://sdf.nbdc.noaa.gov/sos/server.php`, {
+      searchParams: {
+        request: 'GetObservation',
+        service: 'SOS',
+        version: '1.0.0',
+        offering: `urn:ioos:station:wmo:${station}`,
+        observedproperty: 'temperature',
+        responseformat: 'text/csv',
+        eventtime: 'latest'
+      }
+    }).body
+    console.log(tempBody)
+  } catch (error) {
+    errors.push(error)
+  }
 
+  if (errors.length < 1) {
     res.json({
       statusCode: 200,
-      weatherConditions
+      observations
     })
-  } catch (error) {
+  } else {
     res.json({
       statusCode: 500,
       body: error
