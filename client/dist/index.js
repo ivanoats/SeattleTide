@@ -14,7 +14,7 @@ fetch(uri + '?' + cacheBuster, {
     return res.text()
   })
   .then(function (jsontxt) {
-    const conditions = JSON.parse(jsontxt).weatherConditions
+    const conditions = JSON.parse(jsontxt).observations
 
     // DEBUG info
     window.res = conditions
@@ -42,10 +42,10 @@ fetch(uri + '?' + cacheBuster, {
       return c * (9 / 5) + 32
     }
     let temp
-    if (conditions.temperature == null) {
+    if (conditions.airTemp == null) {
       temp = 'Not Available'
     } else {
-      temp = round(convertCtoF(conditions.temperature))
+      temp = round(convertCtoF(conditions.airTemp))
     }
 
     // Pressure
