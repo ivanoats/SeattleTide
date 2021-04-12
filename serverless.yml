@@ -23,6 +23,7 @@ custom:
     endpointType: regional
 
 provider:
+  lambdaHashingVersion: 20201221
   apiGateway:
     shouldStartNameWithService: true
   name: aws

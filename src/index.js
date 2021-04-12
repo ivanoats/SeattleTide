@@ -1,15 +1,16 @@
 const serverless = require('serverless-http')
-const express = require('express')
-const got = require('got')
+// eslint-disable-next-line no-undef
+const express = __non_webpack_require__('express')
+// eslint-disable-next-line no-undef
+const got = __non_webpack_require__('got')
 const parse = require('csv-parse/lib/sync')
 
 function metersPerSecondToMph(ms) {
   return ms * 2.23694
 }
 const app = express()
-// const tabSeparated = 'http://www.ndbc.noaa.gov/data/realtime2/WPOW1.txt'
-// api.weather.gov for WPOW1 hasn't worked since 2020
-// const domain = 'https://api.weather.gov/stations/WPOW1/observations'
+// const tabSeparatedURI = 'http://www.ndbc.noaa.gov/data/realtime2/WPOW1.txt'
+const uri = `https://sdf.ndbc.noaa.gov/sos/server.php`
 
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', '*')
@@ -25,49 +26,51 @@ app.get('/wpow1', async function (req, res) {
   const observations = {}
   const station = req.query.station || 'WPOW1'
   try {
-    const windBody = await got(`https://sdf.ndbc.noaa.gov/sos/server.php`, {
+    const windReq = await got(uri, {
       searchParams: {
         request: 'GetObservation',
         service: 'SOS',
         version: '1.0.0',
         offering: `urn:ioos:station:wmo:${station}`,
-        observedproperty: 'winds',
+        observedProperty: 'winds',
         responseformat: 'text/csv',
         eventtime: 'latest'
       }
-    }).body
+    })
+    const windBody = windReq.body
     const records = parse(windBody, {
       columns: true
     })
-    console.log(records)
     const weatherData = records[0]
-    const windConditions = {
-      stationId: weatherData.station_id,
-      windSpeed: metersPerSecondToMph(
-        parseInt(weatherData['wind_speed (m/s)'])
-      ),
-      windDirection: parseInt(weatherData['wind_from_direction (degree)']),
-      windGust: metersPerSecondToMph(
-        parseInt(weatherData['wind_speed_of_gust (m/s)'])
-      )
-    }
-    observations.windConditions = windConditions
+    observations.stationId = weatherData.station_id
+    observations.windSpeed = metersPerSecondToMph(
+      parseInt(weatherData['wind_speed (m/s)'])
+    )
+    observations.windDirection = parseInt(
+      weatherData['wind_from_direction (degree)']
+    )
+    observations.windGust = metersPerSecondToMph(
+      parseInt(weatherData['wind_speed_of_gust (m/s)'])
+    )
   } catch (error) {
     errors.push(error)
   }
   try {
-    const tempBody = await got(`https://sdf.nbdc.noaa.gov/sos/server.php`, {
+    const tempResults = await got(uri, {
       searchParams: {
         request: 'GetObservation',
         service: 'SOS',
         version: '1.0.0',
         offering: `urn:ioos:station:wmo:${station}`,
-        observedproperty: 'temperature',
+        observedProperty: 'air_temperature',
         responseformat: 'text/csv',
         eventtime: 'latest'
       }
-    }).body
-    console.log(tempBody)
+    })
+    const tempData = parse(tempResults.body, {
+      columns: true
+    })[0]
+    observations.airTemp = parseInt(tempData['air_temperature (C)'])
   } catch (error) {
     errors.push(error)
   }
