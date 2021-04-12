@@ -2,7 +2,6 @@ const serverless = require('serverless-http')
 const express = require('express')
 const got = require('got')
 const parse = require('csv-parse/lib/sync')
-const { resetErrorsCount } = require('ajv/dist/compile/errors')
 
 function metersPerSecondToMph(ms) {
   return ms * 2.23694
@@ -81,7 +80,7 @@ app.get('/wpow1', async function (req, res) {
   } else {
     res.json({
       statusCode: 500,
-      body: error
+      body: errors
     })
   }
 })
