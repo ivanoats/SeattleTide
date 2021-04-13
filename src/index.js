@@ -1,8 +1,7 @@
 const serverless = require('serverless-http')
+const express = require('express')
 // eslint-disable-next-line no-undef
-const express = __non_webpack_require__('express')
-// eslint-disable-next-line no-undef
-const got = __non_webpack_require__('got')
+const got = require('got')
 const parse = require('csv-parse/lib/sync')
 
 function metersPerSecondToMph(ms) {
