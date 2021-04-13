@@ -1,11 +1,11 @@
 {
   "name": "west-point-tide-widget",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A little web app that tells you the weather conditions in Ballard, Seattle",
   "main": "index.js",
   "scripts": {
     "deploy": "sls deploy",
-    "deploy-client": "serverless client deploy --region us-west-2 && aws cloudfront create-invalidation --distribution-id E13JOGYJXQZL0I --paths \"/*\"",
+    "deploy:client": "serverless client deploy --region us-west-2 && aws cloudfront create-invalidation --distribution-id E13JOGYJXQZL0I --paths \"/*\"",
     "client": "live-server --host=localhost --port=3001 client/dist",
     "lint": "eslint client/**/*.js src/**/*.js",
     "lint:fix": "eslint client/**/*.js src/**/*.js --fix",
@@ -29,14 +29,14 @@
   },
   "homepage": "https://github.com/ivanoats/SeattleTide#readme",
   "dependencies": {
-    "@babel/core": "^7.12.7",
-    "babel-loader": "^8.2.1",
+    "@babel/core": "^7.13.15",
+    "babel-loader": "^8.2.2",
     "express": "^4.17.1",
     "lodash": "^4.17.21",
     "request": "^2.88.2",
     "request-promise": "^4.2.6",
     "serverless-finch": "^2.6.0",
-    "serverless-http": "^2.6.0"
+    "serverless-http": "^2.7.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.13.14",
@@ -44,27 +44,26 @@
     "@babel/plugin-proposal-json-strings": "^7.13.8",
     "@babel/plugin-syntax-dynamic-import": "^7.8.3",
     "@babel/plugin-syntax-import-meta": "^7.10.4",
-    "@babel/preset-env": "^7.13.12",
-    "ajv": "^8.0.5",
+    "@babel/preset-env": "^7.13.15",
+    "ajv": "^8.1.0",
     "csv-parse": "^4.15.3",
-    "eslint": "^7.23.0",
+    "eslint": "^7.24.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-config-prettier-standard": "^4.0.1",
     "eslint-config-standard": "^16.0.2",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-prettier": "^3.3.1",
-    "eslint-plugin-promise": "^4.3.1",
+    "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-standard": "^5.0.0",
     "got": "^11.8.2",
     "live-server": "^1.2.1",
     "prettier": "^2.2.1",
     "prettier-config-standard": "^4.0.0",
     "serve": "^11.3.2",
-    "serverless": "^2.34.0",
     "serverless-domain-manager": "^5.1.0",
     "serverless-offline": "^6.9.0",
     "serverless-webpack": "^5.4.1",
-    "webpack": "^5.31.0"
+    "webpack": "^5.32.0"
   }
 }
