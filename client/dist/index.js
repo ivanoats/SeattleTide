@@ -56,10 +56,18 @@ fetch(uri + '?' + cacheBuster, {
       pressure = round(conditions.seaLevelPressure / 100)
     }
 
+    let currentTide
+    if (conditions.currentTide == null) {
+      currentTide = 'Not Available'
+    } else {
+      currentTide = conditions.currentTide
+    }
+
     // Update the html elements
     document.getElementById('direction').innerHTML = directionWithArrow
     document.getElementById('speed').innerText = speed
     document.getElementById('gust').innerText = gust
     document.getElementById('temp').innerText = temp
     document.getElementById('pressure').innerText = pressure
+    document.getElementById('current-tide').innerText = currentTide
   })

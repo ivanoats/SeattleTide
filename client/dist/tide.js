@@ -1,17 +1,3 @@
-const currentTideUri =
-  'https://tidesandcurrents.noaa.gov/api/datagetter?station=9447130&product=water_level&datum=mllw&time_zone=lst_ldt&units=english&format=json&date=latest&application=westpointwinddotcom'
-fetch(currentTideUri, {
-  mode: 'cors'
-})
-  .then(function (res) {
-    return res.text()
-  })
-  .then(function (jsontxt) {
-    const tide = JSON.parse(jsontxt)
-    const currentTide = tide.data[tide.data.length - 1]
-    document.getElementById('current-tide').innerText = currentTide.v
-  })
-
 const leadingZero = (num) => {
   return `${num}`.length === 1 ? `0` + num : num
 }
@@ -47,7 +33,7 @@ const NWSDateToJSDate = (nwsdate) => {
 }
 
 fetch(predictionsUri, {
-  mode: 'cors'
+  mode: 'no-cors'
 })
   .then(function (res) {
     return res.text()

@@ -73,6 +73,16 @@ app.get('/wpow1', async function (req, res) {
   } catch (error) {
     errors.push(error)
   }
+  try {
+    const tideResults = await got(
+      'https://tidesandcurrents.noaa.gov/api/datagetter?station=9447130&product=water_level&datum=mllw&time_zone=lst_ldt&units=english&format=json&date=latest&application=westpointwinddotcom'
+    )
+    const tide = JSON.parse(tideResults.body)
+    const currentTide = tide.data[tide.data.length - 1]
+    observations.currentTide = currentTide.v
+  } catch (error) {
+    errors.push(error)
+  }
 
   if (errors.length < 1) {
     res.json({
