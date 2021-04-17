@@ -1,6 +1,5 @@
-const leadingZero = (num) => {
-  return `${num}`.length === 1 ? `0` + num : num
-}
+import { leadingZero } from './util/leaingZero'
+import { NWSDateToJSDate } from './util/nws-date-to-js-date'
 
 const today = new Date()
 const tomorrow = new Date()
@@ -21,19 +20,8 @@ const endDate = `${year}${formattedTomorrowMonth}${formattedTomorrowDay}`
 
 const predictionsUri = `https://tidesandcurrents.noaa.gov/api/datagetter?product=predictions&application=westpointwinddotcom&begin_date=${beginDate}&end_date=${endDate}&datum=MLLW&station=9447130&time_zone=lst_ldt&units=english&interval=hilo&format=json`
 
-const NWSDateToJSDate = (nwsdate) => {
-  let jsdate
-  if (isNaN(Date.parse(nwsdate))) {
-    return nwsdate
-  } else {
-    jsdate = new Date(nwsdate)
-    const formattedDate = `${jsdate.toLocaleDateString()} ${jsdate.toLocaleTimeString()}`
-    return formattedDate
-  }
-}
-
 fetch(predictionsUri, {
-  mode: 'no-cors'
+  mode: 'cors'
 })
   .then(function (res) {
     return res.text()

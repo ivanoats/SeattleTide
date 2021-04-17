@@ -6,7 +6,8 @@ This example is hard-coded to West Point for weather, and Meadow Point (near Gol
 
 ### Data sources
 
-National Weather Service (NWS) Station ID: https://api.weather.gov/stations/WPOW1/observations
+- National Weather Service (NWS) Station ID: https://api.weather.gov/stations/WPOW1/observations this has been offline since 2019, and the NWS's backlog of software development is so huge, I doubt it will ever get fixed.
+- National Buoy Data Center (NBDC): This is a more reliable API, even if it only provides CSV data instead of JSON. 
 
 ### License
 
