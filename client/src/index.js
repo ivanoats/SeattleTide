@@ -17,6 +17,7 @@ fetch(uri + '?' + cacheBuster, {
     const conditions = JSON.parse(jsontxt).observations
 
     // DEBUG info
+    // @ts-ignore
     window.res = conditions
 
     // Process the lines of the text file
