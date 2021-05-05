@@ -7,6 +7,7 @@
     "deploy": "sls deploy",
     "deploy:client": "serverless client deploy --region us-west-2 && aws cloudfront create-invalidation --distribution-id E13JOGYJXQZL0I --paths \"/*\"",
     "client": "live-server --host=localhost --port=3001 client/dist",
+    "client:dev": "cd client && webpack --mode development",
     "lint": "eslint client/**/*.js src/**/*.js",
     "lint:fix": "eslint client/**/*.js src/**/*.js --fix",
     "eslint-check": "npx eslint-config-prettier .eslintrc.js",
@@ -64,6 +65,7 @@
     "serverless-domain-manager": "^5.1.0",
     "serverless-offline": "^6.9.0",
     "serverless-webpack": "^5.4.1",
-    "webpack": "^5.33.2"
+    "webpack": "^5.33.2",
+    "webpack-cli": "^4.6.0"
   }
 }
