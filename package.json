@@ -30,7 +30,7 @@
   "homepage": "https://github.com/ivanoats/SeattleTide#readme",
   "dependencies": {
     "@babel/core": "^7.17.4",
-    "babel-loader": "^8.2.4",
+    "babel-loader": "^8.2.5",
     "express": "^4.17.3",
     "lodash": "^4.17.21",
     "request": "^2.88.2",
