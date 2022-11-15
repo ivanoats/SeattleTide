@@ -60,7 +60,7 @@
     "live-server": "^1.2.1",
     "prettier": "^2.2.1",
     "prettier-config-standard": "^4.0.0",
-    "serve": "^11.3.2",
+    "serve": "^14.1.1",
     "serverless-domain-manager": "^5.1.0",
     "serverless-offline": "^6.9.0",
     "serverless-webpack": "^5.4.1",
