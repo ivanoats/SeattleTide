@@ -6,7 +6,9 @@
   "scripts": {
     "deploy": "sls deploy",
     "deploy:client": "serverless client deploy --region us-west-2 && aws cloudfront create-invalidation --distribution-id E13JOGYJXQZL0I --paths \"/*\"",
-    "client": "live-server --host=localhost --port=3001 client/dist",
+    "client:serve": "live-server --host=localhost --port=3001 client/dist",
+    "client:webpack": "webpack",
+    "client": "npm run client:webpack && npm run client:serve",
     "lint": "eslint client/**/*.js src/**/*.js",
     "lint:fix": "eslint client/**/*.js src/**/*.js --fix",
     "eslint-check": "npx eslint-config-prettier .eslintrc.js",
@@ -35,7 +37,7 @@
     "lodash": "^4.17.21",
     "request": "^2.88.2",
     "request-promise": "^4.2.6",
-    "serverless-finch": "^2.8.0",
+    "serverless-finch": "^4.0.0",
     "serverless-http": "^2.7.0"
   },
   "devDependencies": {
@@ -56,13 +58,14 @@
     "eslint-plugin-prettier": "^3.4.0",
     "eslint-plugin-promise": "^5.1.0",
     "got": "^11.8.5",
-    "live-server": "^1.2.1",
+    "live-server": "^1.2.2",
     "prettier": "^2.8.0",
     "prettier-config-standard": "^4.0.0",
     "serve": "^14.1.2",
     "serverless-domain-manager": "^5.1.0",
     "serverless-offline": "^6.9.0",
     "serverless-webpack": "^5.11.0",
-    "webpack": "^5.75.0"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.0"
   }
 }
