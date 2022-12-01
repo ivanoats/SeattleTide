@@ -8,6 +8,7 @@
   <style>
     .pad {
       padding: 0 20px 0 20px;
+      font-size: 1.5rem;
     }
     .responsive-image {
       max-width: 200px;
@@ -27,23 +28,21 @@
   <meta property="og:image:height" content="279">
   <meta property="og:title" content="Elks Paddle Club Tide and Wind">
   <meta property="og:description" content="Tide for Meadow Point and wind from West Point">
-  <link href="//cdn.muicss.com/mui-0.9.41/css/mui.min.css" rel="stylesheet" type="text/css" />
+  <link href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css" rel="stylesheet" type="text/css" />
   <link href="spinner.css" rel="stylesheet" type="text/css" />
   <script src="//cdn.muicss.com/mui-0.9.41/js/mui.min.js"></script> <meta property="og:url" content="https://westpointwind.com">
   <script src='https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js'></script>
   <link href='https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css' rel='stylesheet' />
 </head>
 
-<body>
-  <div class="mui-container">
-    <div class="mui-appbar">
-      <div class="mui--text-title mui--text-center mui--appbar-height mui--appbar-line-height">
-        West Point Conditions
-      </div>
+<body class>
+    <div class="mui-appbar mui--appbar-line-height">
+      <span class="mui--text-title mui--visible-xs-inline-block mui--visible-sm-inline-block">
+        &nbsp;West Point, Seattle WA
+      </span>
     </div>
     <div class="mui-panel">
       <div id="wpow" class="pad">
-        <p>Update: Tempurature and Pressure not working, but coming soon!</p>
         <ul class="mui-list--unstyled">
           <li>Wind direction:
             <span id="direction">
@@ -70,11 +69,6 @@
             <span id="current-tide">
               <div class="spinner-loader">Loading…</div>
             </span> ft
-          </li>
-          <li>Next tide levels:
-            <span id="next-tide">
-              <div class="spinner-loader">Loading…</div>
-            </span>
           </li>
         </ul>
         <p>
@@ -139,7 +133,6 @@
         <img class="responsive-image" src="images/pfdleash.jpg" alt="PDF and Leash logo">
       </a>
     </div>
-  </div>
   <script src="index.js"></script>
   <script src="tide.js"></script>
 </body>
