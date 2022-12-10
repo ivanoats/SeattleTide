@@ -7,3 +7,4 @@ client/dist/tmp
 node_modules
 bower_components
 .webpack
+.DS_Store
