@@ -33,7 +33,7 @@
   "dependencies": {
     "@babel/core": "^7.20.5",
     "babel-loader": "^8.3.0",
-    "express": "^4.19.2",
+    "express": "^4.21.0",
     "lodash": "^4.17.21",
     "request": "^2.88.2",
     "request-promise": "^4.2.6",
