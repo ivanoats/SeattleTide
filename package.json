@@ -34,7 +34,7 @@
     "@babel/core": "^7.20.5",
     "babel-loader": "^8.3.0",
     "express": "^4.21.2",
-    "lodash": "^4.17.21",
+    "lodash": "^4.17.23",
     "request": "^2.88.2",
     "request-promise": "^4.2.6",
     "serverless-finch": "^4.0.0",
